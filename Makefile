@@ -11,3 +11,14 @@ help: ## Справка
 
 up: ## Запуск проекта
 	docker-compose -f docker/docker-compose.yml up -d
+
+down: ## Остановка всех контейнеров проекта
+	docker-compose -f docker/docker-compose.yml down
+
+build: ## Билд проекта
+	docker-compose -f docker/docker-compose.yml build
+
+rebuild: down build ## Пересборка проекта
+
+npm-i: ## Установка указанной зависимости внутри контейнера Node.js
+	docker-compose -f docker/docker-compose.yml exec gd-client npm install $(p)
