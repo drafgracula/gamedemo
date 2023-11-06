@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  gd-nginx:
+    container_name: gd-nginx
+    image: nginx:stable-alpine
+    ports:
+      - ${WEBSERVER_PORT}:80
+    env_file: .env
+    volumes:
+      - ../client:/var/www/gamedemo
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/logs:/var/log/nginx/
